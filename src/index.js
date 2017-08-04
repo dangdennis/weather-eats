@@ -7,10 +7,10 @@ import rootReducer from './reducers';
 
 import App from './components/app';
 
-// const createStoreWithMiddleWare = applyMiddleware(middleware)(createStore);
+const createStoreWithMiddleWare = applyMiddleware()(createStore);
 
 ReactDOM.render(
-	<Provider store={createStore(rootReducer)}>
+	<Provider store={createStoreWithMiddleWare(rootReducer)}>
 		<Router>
 			<App />
 		</Router>

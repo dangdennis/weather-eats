@@ -4,10 +4,11 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import rootReducer from './reducers';
+import thunk from 'redux-thunk';
 
 import App from './components/app';
 
-const createStoreWithMiddleWare = applyMiddleware()(createStore);
+const createStoreWithMiddleWare = applyMiddleware(thunk)(createStore);
 
 ReactDOM.render(
 	<Provider store={createStoreWithMiddleWare(rootReducer)}>

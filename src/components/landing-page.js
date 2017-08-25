@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { get_yelp } from "../actions";
-
+import './style.css';
 import Yelp from "./yelp";
 
 class LandingPage extends Component {

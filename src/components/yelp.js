@@ -15,9 +15,9 @@ const Yelp = (props) => {
 						<div className='card-block'>
 							<h4 className='card-title'>{item.name}</h4>
 							<div>
-								<p className='card-text'>{item.rating}</p>
-								<p className='card-text'>{item.rating}</p>
-								<p className='card-text'>{item.rating}</p>
+								<p className='card-text'>Rating: {item.rating}</p>
+								<p className='card-text'>Price: {item.price}</p>
+								<p className='card-text'><a href={item.url}>Yelp URL</a></p>
 							</div>
 						</div>
 					</div>

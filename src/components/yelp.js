@@ -3,28 +3,26 @@ import React, { Component } from "react";
 const Yelp = (props) => {
 	if(props.yelp === null){
 		return(
-			<h1>Enter a Zipcode to Find Food Related to the Weather!</h1>
+			<h2 className='offset-md-1'>A fun app that gives a list of restaurants based on the weather</h2>
 		)
 	}
 	else{
 		console.log('this is props', props.yelp);
 		let yelp_items = props.yelp.map((item, index)=>{
 			return(
-					<div className='card'>
-						<img src={item.image_url} />
-						<div className='card-block'>
-							<h4 className='card-title'>{item.name}</h4>
-							<div>
-								<p className='card-text'>Rating: {item.rating}</p>
-								<p className='card-text'>Price: {item.price}</p>
-								<p className='card-text'><a href={item.url}>Yelp URL</a></p>
-							</div>
-						</div>
-					</div>
+				<div className='cards col-md-3' key={index}>
+					<img className='rest_img' src={item.image_url} />
+					<ul className='list-group'>
+						<h4 className='card_title list-group-item'>{item.name}</h4>
+						<li className='list-group-item'>Price: {item.price}</li>
+						<li className='list-group-item'>Rating: {item.rating}/5</li>
+						<li className='list-group-item'><a href={item.url}>Yelp URL</a></li>
+					</ul>
+				</div>
 			);
 		});
 		return(
-			<div className='card-group'>{yelp_items}</div>
+			<div className='deck row'>{yelp_items}</div>
 		);
 	}
 };

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
-import weatherReducer from './weather_reducer';
+import yelpReducer from './yelp_reducer';
 
 export default combineReducers({
-	weather: weatherReducer
+	yelp: yelpReducer
 });

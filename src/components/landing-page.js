@@ -9,7 +9,8 @@ class LandingPage extends Component {
 		super(props);
 
 		this.state = {
-			input: ""
+			input: "",
+			yelp: []
 		};
 	}
 
@@ -22,20 +23,20 @@ class LandingPage extends Component {
 		// if (!this.props.data) {
 		// 	return <div>Loading...</div>;
 		// }
-		if (!this.props.data) {
-			console.log("no data yet");
-		}
-		console.log("if data, hi we have data from props", this.props.data);
 		return (
-			<div>
+		<div className='container'>
+			<div className='row'>
 				<input
 					type="text"
 					value={this.state.input}
 					onChange={e => this.setState({ input: e.target.value })}
 				/>
 				<button onClick={() => this.handleSubmit()}>Submit Zipcode</button>
-				<Yelp />
 			</div>
+			<div className='row'>
+				<Yelp yelp = {this.props.data} />
+			</div>
+		</div>
 		);
 	}
 }

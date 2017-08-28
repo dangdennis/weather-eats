@@ -1,26 +1,26 @@
-body{
+body {
   background-image: url('./imgs/background.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
-h2{
+h2 {
   color: white;
   text-align: center;
 }
-.rest_img{
+.rest_img {
   width: 100%;
   height: 200px;
   border-radius: 10px;
 }
-.cards{
+.cards {
   border-radius: 10px;
 }
-.cards:hover{
+.cards:hover {
   opacity: 0.3;
 }
-.deck{
+.deck {
   margin-top: 10px;
 }
-.waiting{
+.waiting {
   text-align: center;
 }

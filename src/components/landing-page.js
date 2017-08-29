@@ -4,6 +4,7 @@ import { get_yelp } from "../actions";
 import { get_yt } from '../actions';
 import './style.css';
 import Yelp from "./yelp";
+import YTSearch from './yt_search';
 
 class LandingPage extends Component {
 	constructor(props) {
@@ -41,7 +42,10 @@ class LandingPage extends Component {
 				</div>
 			</div>
 			<div className='row'>
-				<Yelp yelp = {this.props.data}  weather = {this.props.weather}/>
+				<YTSearch weather = {this.props.weather} />
+			</div>
+			<div className='row'>
+				<Yelp yelp = {this.props.data} />
 			</div>
 		</div>
 		);

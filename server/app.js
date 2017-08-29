@@ -21,7 +21,8 @@ app.post("/search", (req, res) => {
 	client
 		.search({
 			term: req.body.term,
-			location: req.body.zipcode
+			location: req.body.zipcode,
+			limit: 4
 		})
 		.then(response => {
 			res.end(JSON.stringify(response.jsonBody.businesses));

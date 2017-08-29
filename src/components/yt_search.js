@@ -6,20 +6,20 @@ class YTSearch extends Component{
   constructor(props){
     super(props);
     this.state = {
-      yt_term: '',
       video_shown: null
     }
   }
   componentWillReceiveProps(nextProps){
     let {weather} = nextProps;
+
     if(weather === null){
-      console.log('no weather still...');
+      console.log('no weather still...', weather);
     }
     else if(weather >= 200 && weather <=599){
       term = 'la vie en rose louis armstrong';
       YT_Search({key: YT_API_KEY, term},(videos)=>{
         this.setState({
-          video_shown: videos[0].etag
+          video_shown: videos[0].id.videoId
         })
       })
     }
@@ -27,15 +27,17 @@ class YTSearch extends Component{
       term = 'christmas music';
       YT_Search({key: YT_API_KEY, term},(videos)=>{
         this.setState({
-          video_shown: videos[0].etag
+          video_shown: videos[0].id.videoId
         })
       })
     }
     else if(weather >= 700 && weather <=799){
-      term = 'electronic music';
+      term = 'griz';
       YT_Search({key: YT_API_KEY, term},(videos)=>{
+        console.log('this is videos: ', videos);
+
         this.setState({
-          video_shown: videos[0].etag
+          video_shown: videos[0].id.videoId
         })
       })
     }
@@ -43,7 +45,7 @@ class YTSearch extends Component{
       term = 'griz';
       YT_Search({key: YT_API_KEY, term},(videos)=>{
         this.setState({
-          video_shown: videos[0].etag
+          video_shown: videos[0].id.videoId
         })
       })
     }
@@ -51,7 +53,7 @@ class YTSearch extends Component{
       term = 'jazz blues';
       YT_Search({key: YT_API_KEY, term},(videos)=>{
         this.setState({
-          video_shown: videos[0].etag
+          video_shown: videos[0].id.videoId
         })
       })
     }
@@ -59,15 +61,17 @@ class YTSearch extends Component{
       term = 'stairway to heaven';
       YT_Search({key: YT_API_KEY, term},(videos)=>{
         this.setState({
-          video_shown: videos[0].etag
+          video_shown: videos[0].id.videoId
         })
       })
     }
   }
   render(){
-    console.log('this is the state of video: ', this.state.video_shown);
+    console.log('this is the state of the video shown: ', this.state.video_shown);
     return(
-      <iframe src={`https://www.youtube.com/embed/${this.state.video_shown}`}></iframe>
+      <div className='col-md-1 offset-md-4 yt_video'>
+        <iframe frameBorder='0' src={'https://www.youtube.com/embed/'+this.state.video_shown+'?autoplayer=1'}></iframe>
+      </div>
     )
   }
 }

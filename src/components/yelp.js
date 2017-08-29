@@ -17,7 +17,7 @@ const Yelp = (props) => {
 						<h4 className='card_title list-group-item'>{item.name}</h4>
 						<li className='list-group-item'>Price: {item.price}</li>
 						<li className='list-group-item'>Rating: {item.rating}/5</li>
-						<li className='list-group-item'><a href={item.url}>Yelp URL</a></li>
+						<li className='list-group-item'><a target="_blank" href={item.url}>Yelp URL</a></li>
 					</ul>
 				</div>
 			);

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { get_yelp } from "../actions";
-import { get_yt } from '../actions';
-import './style.css';
+import "./style.css";
 import Yelp from "./yelp";
 import YTSearch from './yt_search';
+import Youtube from "./youtube-iframe";
 
 class LandingPage extends Component {
 	constructor(props) {
@@ -26,28 +26,34 @@ class LandingPage extends Component {
 		// 	return <div>Loading...</div>;
 		// }
 		return (
-		<div className='container'>
-			<h2>Weather Eats</h2>
-			<div className='row'>
-				<div className='input-group col-md-5 offset-md-4'>
-					<input
-						className='form-control'
-						type="text"
-						value={this.state.input}
-						onChange={e => this.setState({ input: e.target.value })}
-					/>
-					<div className='input-group-btn'>
-						<button className='btn btn-outline-primary' onClick={() => this.handleSubmit()}>Submit Zipcode</button>
+			<div className="container">
+				<h2>Weather Eats</h2>
+				<div className="row">
+					<div className="input-group col-md-5 offset-md-4">
+						<input
+							className="form-control"
+							type="text"
+							value={this.state.input}
+							onChange={e => this.setState({ input: e.target.value })}
+						/>
+						<div className="input-group-btn">
+							<button
+								className="btn btn-outline-primary"
+								onClick={() => this.handleSubmit()}
+							>
+								Submit Zipcode
+							</button>
+						</div>
 					</div>
 				</div>
+				<div className='row'>
+					<YTSearch weather = {this.props.weather} />
+				</div>
+				<div className='row'>
+					<Yelp yelp = {this.props.data} />
+				</div>
 			</div>
-			<div className='row'>
-				<YTSearch weather = {this.props.weather} />
-			</div>
-			<div className='row'>
-				<Yelp yelp = {this.props.data} />
-			</div>
-		</div>
+
 		);
 	}
 }

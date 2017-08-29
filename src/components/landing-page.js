@@ -4,7 +4,7 @@ import { get_yelp } from "../actions";
 import "./style.css";
 import Yelp from "./yelp";
 import YTSearch from './yt_search';
-import Youtube from "./youtube-iframe";
+// import Youtube from "./youtube-iframe";
 
 class LandingPage extends Component {
 	constructor(props) {

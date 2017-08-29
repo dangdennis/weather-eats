@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { get_yelp } from "../actions";
 import "./style.css";
 import Yelp from "./yelp";
-import Youtube from "./youtube-iframe";
+import YTSearch from './yt_search';
+// import Youtube from "./youtube-iframe";
 
 class LandingPage extends Component {
 	constructor(props) {
@@ -45,18 +46,13 @@ class LandingPage extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="row">
-					<Yelp yelp={this.props.data} />
+				<div className='row'>
+					<YTSearch weather = {this.props.weather} />
 				</div>
-				<div className="row">
-					<Youtube />
+				<div className='row'>
+					<Yelp yelp = {this.props.data} />
 				</div>
 			</div>
-			<div className='row'>
-				<Yelp yelp = {this.props.data} />
-			</div>
-		</div>
-
 
 		);
 	}

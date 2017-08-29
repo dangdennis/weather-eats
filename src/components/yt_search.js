@@ -67,10 +67,16 @@ class YTSearch extends Component{
     }
   }
   render(){
+    let style = {}
+    if(this.state.video_shown === null){
+      style = {
+        display: 'none'
+      }
+    }
     console.log('this is the state of the video shown: ', this.state.video_shown);
     return(
       <div className='col-md-1 offset-md-4 yt_video'>
-        <iframe frameBorder='0' src={'https://www.youtube.com/embed/'+this.state.video_shown+'?autoplayer=1'}></iframe>
+        <iframe style={style} frameBorder='0' src={'https://www.youtube.com/embed/'+this.state.video_shown+'?autoplay=1'}></iframe>
       </div>
     )
   }

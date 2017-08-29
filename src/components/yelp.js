@@ -8,6 +8,7 @@ const Yelp = (props) => {
 	}
 	else{
 		console.log('this is props', props.yelp);
+		console.log('this is props for weather: ', props.weather);
 		let yelp_items = props.yelp.map((item, index)=>{
 			return(
 				<div className='cards col-md-3' key={index}>

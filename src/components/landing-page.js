@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { get_yelp } from "../actions";
+import { get_yt } from '../actions';
 import './style.css';
 import Yelp from "./yelp";
 
@@ -40,7 +41,7 @@ class LandingPage extends Component {
 				</div>
 			</div>
 			<div className='row'>
-				<Yelp yelp = {this.props.data} />
+				<Yelp yelp = {this.props.data}  weather = {this.props.weather}/>
 			</div>
 		</div>
 		);
@@ -49,8 +50,10 @@ class LandingPage extends Component {
 
 function mapStateToProps(state) {
 	return {
-		data: state.yelp.businesses
+		data: state.yelp.businesses,
+		weather: state.yelp.weather
 	};
+	console.log('this is weather: ', this.state.weather);
 }
 
 export default connect(mapStateToProps, { get_yelp })(LandingPage);

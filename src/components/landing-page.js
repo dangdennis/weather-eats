@@ -52,14 +52,22 @@ class LandingPage extends Component {
 					<Youtube />
 				</div>
 			</div>
+			<div className='row'>
+				<Yelp yelp = {this.props.data} />
+			</div>
+		</div>
+
+
 		);
 	}
 }
 
 function mapStateToProps(state) {
 	return {
-		data: state.yelp.businesses
+		data: state.yelp.businesses,
+		weather: state.yelp.weather
 	};
+	console.log('this is weather: ', this.state.weather);
 }
 
 export default connect(mapStateToProps, { get_yelp })(LandingPage);

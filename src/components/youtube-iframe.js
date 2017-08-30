@@ -2,6 +2,20 @@ import React from "react";
 import YouTube from "react-youtube";
 
 class Youtube extends React.Component {
+	pauseVideo() {
+		console.log("opts", opts);
+	}
+
+	_toggleSound(e) {
+		console.log("state changing", e);
+	}
+
+	_onReady(event) {
+		// access to player in all event handlers via event.target
+		console.log("yt event", event);
+		event.target.pauseVideo();
+	}
+
 	render() {
 		const opts = {
 			height: "390",
@@ -13,13 +27,16 @@ class Youtube extends React.Component {
 		};
 
 		return (
-			<YouTube videoId="2g811Eo7K8U" opts={opts} onReady={this._onReady} />
+			<div>
+				<YouTube
+					videoId="XRD9JTGEE6U"
+					opts={opts}
+					onReady={this._onReady}
+					onStateChange={this._toggleSound}
+				/>
+				<button onClick={() => this.pauseVideo(opts)}>mute</button>
+			</div>
 		);
-	}
-
-	_onReady(event) {
-		// access to player in all event handlers via event.target
-		event.target.pauseVideo();
 	}
 }
 

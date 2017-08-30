@@ -1,12 +1,12 @@
 import types from "./types";
 import axios from "axios";
-import YTSearch from 'youtube-api-search';
-const WEATHER_API_KEY = "e10d3078fcfee83959e11c64b8895226";
+import YTSearch from "youtube-api-search";
+const KEY = require("./keys");
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/weather?zip=`;
 
 export function get_yelp(zipcode) {
 	return dispatch => {
-		const url = `${ROOT_URL}${zipcode},us&appid=${WEATHER_API_KEY}`;
+		const url = `${ROOT_URL}${zipcode},us&appid=${KEY.api_key}`;
 		const request = axios.get(url).then(resp => {
 			const id = resp.data.weather[0].id;
 			dispatch({
@@ -14,18 +14,17 @@ export function get_yelp(zipcode) {
 				payload: id
 			});
 			var term = determineWeather(id);
-			console.log("term", term);
-			axios.post("http://localhost:5000/search", { zipcode, term }).then(resp => {
-				console.log("resp within yelp search", resp);
-				dispatch({
-					type: types.GET_LOCAL_YELP,
-					payload: resp.data
+			axios
+				.post("http://localhost:5000/search", { zipcode, term })
+				.then(resp => {
+					dispatch({
+						type: types.GET_LOCAL_YELP,
+						payload: resp.data
+					});
 				});
-			});
 		});
 	};
 }
-
 
 function determineWeather(weatherID) {
 	// const condition = {

@@ -7,10 +7,9 @@ export default function(state = DEFAULT_STATE, action) {
 			return { ...state, businesses: action.payload };
 			break;
 		case types.GET_WEATHER:
-			return { ...state, weather: action.payload};
+			return { ...state, weather: action.payload };
 			break;
 		default:
 			return state;
-			break;
 	}
 }

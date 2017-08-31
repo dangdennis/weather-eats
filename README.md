@@ -1,23 +1,20 @@
-# React Starter
+## Weather Eats
 
-> This repo contains boilerplate code to aid in the creation of a new React app with Redux. Follow the below setup instructions to get started.
+This proof-of-concept application takes a user's zipcode, serves them their local eateries based upon their current weather, along with mood-matching music. The application interfaces with Yelp's latest V3.0 API, Yelp Fusion, OpenWeatherAPI, and Youtube API. 
 
-### Setup Instructions
+**Devs**
 
-> 1. Fork this repo
-> 1. Clone your forked copy of this repo
->    - `git clone https://github.com/[Your Username]/react_starter.git`
-> 1. Change directory into the newly cloned repo
->    - `cd react_starter`
-> 1. Install dependencies 
->    - `npm install`
-> 1. Start dev server
->    - `npm start`
-> 1. Open a browser and navigate to `localhost:3000` You should see a page that displays "Welcome to React!"
+* Dennis D
+* Howard Kim
 
-### Bundle For Deployment
+**Technologies**
 
-> 1. Run webpack to bundle files
->    - `npm run bundle`
-> 
-> **NOTE:** *After bundling you can not directly run your app locally. You must run your app from the root directory of a server.*
+* React.js
+
+* Redux
+
+* HTML5
+
+* Bootstrap 4
+
+* NodeJS + Express Middleware

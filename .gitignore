@@ -1,7 +1,5 @@
 .idea
 .DS_Store
 node_modules
-dist
-!dist/index.html
 keys.js
 .sass-cache

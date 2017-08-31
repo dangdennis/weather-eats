@@ -3,7 +3,6 @@ import axios from "axios";
 import YTSearch from "youtube-api-search";
 const KEY = require("./keys");
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/weather?zip=`;
-
 export function get_yelp(zipcode) {
 	return dispatch => {
 		const url = `${ROOT_URL}${zipcode},us&appid=${KEY.api_key}`;

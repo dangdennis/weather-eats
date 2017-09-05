@@ -17,7 +17,7 @@ const YELP_ACCESS_TOKEN =
 
 const client = yelp.client(YELP_ACCESS_TOKEN);
 
-app.use(express.static(path.resolve(__dirname, 'dist')));
+app.use(express.static(path.resolve("..", "dist")));
 
 app.post("/search", (req, res) => {
 	client
@@ -36,7 +36,7 @@ app.post("/search", (req, res) => {
 
 app.get("*", (req, res) => {
 	res.sendFile(path.resolve(__dirname, "dist", "index.html"));
-})
+});
 
 app.listen("5000", () => {
 	console.log("listening on 5000");

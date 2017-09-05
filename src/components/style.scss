@@ -1,16 +1,21 @@
+//SASS for Yelp
 $box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-
+$primary-color: #069D78;
 body {
   // background-image: url('./imgs/background.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-color: #fafafa;
 }
-
+.navbar-brand{
+  height: auto;
+  width: 120px;
+}
 .headings {
   color: black;
   text-align: center;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 .restaurant_img {
@@ -26,6 +31,7 @@ body {
 
 .cards:hover {
   box-shadow: $box-shadow;
+  border: 2px solid $primary-color;
 }
 
 .deck {

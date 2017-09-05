@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { get_yelp } from "../actions";
-import "./style.css";
 import Yelp from "./yelp";
 import YTSearch from "./yt_search";
 
@@ -28,7 +27,7 @@ class LandingPage extends Component {
 	render() {
 		return (
 			<div className="container text-center mt-5">
-				<h2 className="headings mb-2">Weather Eats</h2>
+				{/* <h2 className="headings mb-2">Weather Eats</h2> */}
 				<div className="row">
 					<div className="input-group col-md-4 col-8 offset-md-4">
 						<input

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { get_yelp } from "../actions";
+import { get_yelp, check_time } from "../actions";
 import Yelp from "./yelp";
 import YTSearch from "./yt_search";
+
 
 class LandingPage extends Component {
 	constructor(props) {
@@ -13,9 +14,21 @@ class LandingPage extends Component {
 			yelp: []
 		};
 	}
-
+	componentWillMount(){
+		this.props.check_time();
+	}
+	// 	thunderstorm: 200-299,
+	// 	drizzle: 300-399,
+	// 	rain: 500-599,
+	// 	snow: 600-699,
+	// 	atmosphere: 700-799,
+	// 	clear: 800,
+	// 	clouds: 801-899,
+	// 	extreme: 900-999
 	handleSubmit() {
 		this.props.get_yelp(this.state.input);
+		console.log('this is props of weather: ', this.props.weather);
+		const {weather} = this.props;
 	}
 
 	onEnter(e) {
@@ -26,7 +39,10 @@ class LandingPage extends Component {
 
 	render() {
 		return (
-			<div className="container text-center mt-5">
+		<div className='body-container clear'>
+			<div className="container text-center">
+				{this.props.time}
+				{this.props.weather}
 				{/* <h2 className="headings mb-2">Weather Eats</h2> */}
 				<div className="row">
 					<div className="input-group col-md-4 col-8 offset-md-4">
@@ -55,6 +71,7 @@ class LandingPage extends Component {
 					<Yelp yelp={this.props.data} />
 				</div>
 			</div>
+		</div>
 		);
 	}
 }
@@ -62,8 +79,9 @@ class LandingPage extends Component {
 function mapStateToProps(state) {
 	return {
 		data: state.yelp.businesses,
-		weather: state.yelp.weather
+		weather: state.yelp.weather,
+		time: state.yelp.time
 	};
 }
 
-export default connect(mapStateToProps, { get_yelp })(LandingPage);
+export default connect(mapStateToProps, { get_yelp, check_time })(LandingPage);

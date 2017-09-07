@@ -8,13 +8,17 @@ export function get_yelp(zipcode) {
 		const url = `${ROOT_URL}${zipcode},us&appid=${KEY.api_key}`;
 		const request = axios.get(url).then(resp => {
 			const id = resp.data.weather[0].id;
+			const weather_term = determineWeatherClass(id);
 			dispatch({
 				type: types.GET_WEATHER,
-				payload: id
+				payload: {
+					id: id,
+					weather_term: weather_term
+				}
 			});
 			var term = determineWeather(id);
 			axios
-				.post("/search", { zipcode, term })
+				.post("http://localhost:5000/search", { zipcode, term })
 				.then(resp => {
 					dispatch({
 						type: types.GET_LOCAL_YELP,
@@ -24,7 +28,46 @@ export function get_yelp(zipcode) {
 		});
 	};
 }
-
+export function check_time(){
+	var currentTime = new Date().getHours();
+	return dispatch =>{
+		dispatch({
+			type: types.GET_TIME,
+			payload: currentTime
+		})
+	}
+}
+//returns a css className to be used in landing-page
+function determineWeatherClass(weatherID){
+	let weather_term;
+	switch (weatherID) {
+		//case for thunderstorm, drizzle, and rain weather
+		case weatherID >= 200 && weatherID <= 599 ? weatherID : !weatherID:
+			weather_term = 'weather rain';
+			break;
+		//case for snow weather
+		case weatherID >= 600 && weatherID <= 699 ? weatherID : !weatherID:
+			weather_term = 'weather snow';
+			break;
+		//case for atmosphere weather
+		case weatherID >= 700 && weatherID <= 799 ? weatherID : !weatherID:
+			weather_term = 'clear';
+			break;
+		//case for clear weather
+		case weatherID == 800 ? weatherID : !weatherID:
+			weather_term = 'clear';
+			break;
+		//case for clouds
+		case weatherID > 800 && weatherID <= 899 ? weatherID : !weatherID:
+			weather_term = 'cloudy';
+			break;
+		//case for extreme weathers
+		case weatherID >= 900 && weatherID <= 999 ? weatherID : !weatherID:
+			weather_term = 'danger';
+			break;
+	}
+	return weather_term;
+}
 function determineWeather(weatherID) {
 	// const condition = {
 	// 	thunderstorm: 200-299,

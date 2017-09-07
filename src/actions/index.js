@@ -1,20 +1,18 @@
 import types from "./types";
 import axios from "axios";
-import YTSearch from "youtube-api-search";
-const KEY = require("./keys");
+// import YTSearch from "youtube-api-search";
+import KEY from './keys'
+// const KEY = require("./keys");
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/weather?zip=`;
 export function get_yelp(zipcode) {
 	return dispatch => {
 		const url = `${ROOT_URL}${zipcode},us&appid=${KEY.api_key}`;
 		const request = axios.get(url).then(resp => {
 			const id = resp.data.weather[0].id;
-			const weather_term = determineWeatherClass(id);
+			const weather_term = determineWeatherTerm(id);
 			dispatch({
 				type: types.GET_WEATHER,
-				payload: {
-					id: id,
-					weather_term: weather_term
-				}
+				payload: [id, weather_term]
 			});
 			var term = determineWeather(id);
 			axios
@@ -28,26 +26,17 @@ export function get_yelp(zipcode) {
 		});
 	};
 }
-export function check_time(){
-	var currentTime = new Date().getHours();
-	return dispatch =>{
-		dispatch({
-			type: types.GET_TIME,
-			payload: currentTime
-		})
-	}
-}
-//returns a css className to be used in landing-page
-function determineWeatherClass(weatherID){
+function determineWeatherTerm(weatherID){
 	let weather_term;
+
 	switch (weatherID) {
 		//case for thunderstorm, drizzle, and rain weather
 		case weatherID >= 200 && weatherID <= 599 ? weatherID : !weatherID:
-			weather_term = 'weather rain';
+			weather_term = 'rain';
 			break;
 		//case for snow weather
 		case weatherID >= 600 && weatherID <= 699 ? weatherID : !weatherID:
-			weather_term = 'weather snow';
+			weather_term = 'snow';
 			break;
 		//case for atmosphere weather
 		case weatherID >= 700 && weatherID <= 799 ? weatherID : !weatherID:
@@ -59,7 +48,7 @@ function determineWeatherClass(weatherID){
 			break;
 		//case for clouds
 		case weatherID > 800 && weatherID <= 899 ? weatherID : !weatherID:
-			weather_term = 'cloudy';
+			weather_term = 'clouds';
 			break;
 		//case for extreme weathers
 		case weatherID >= 900 && weatherID <= 999 ? weatherID : !weatherID:

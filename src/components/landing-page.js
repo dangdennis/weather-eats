@@ -1,6 +1,7 @@
 import React, { Component } from "react";
+import './weather.css';
 import { connect } from "react-redux";
-import { get_yelp, check_time } from "../actions";
+import { get_yelp } from "../actions";
 import Yelp from "./yelp";
 import YTSearch from "./yt_search";
 
@@ -14,9 +15,7 @@ class LandingPage extends Component {
 			yelp: []
 		};
 	}
-	componentWillMount(){
-		this.props.check_time();
-	}
+
 	// 	thunderstorm: 200-299,
 	// 	drizzle: 300-399,
 	// 	rain: 500-599,
@@ -27,7 +26,7 @@ class LandingPage extends Component {
 	// 	extreme: 900-999
 	handleSubmit() {
 		this.props.get_yelp(this.state.input);
-		console.log('this is props of weather: ', this.props.weather);
+
 		const {weather} = this.props;
 	}
 
@@ -35,17 +34,26 @@ class LandingPage extends Component {
 		if (e.key === "Enter") {
 			this.props.get_yelp(this.state.input);
 		}
+		console.log('this is props of weather: ', this.props.weather);
 	}
 
 	render() {
+		// console.log('this is weather: ', this.props.weather);
+		let weather_term;
+		if(!this.props.weather){
+			weather_term = 'none';
+		}
+		else{
+			weather_term = this.props.weather[1];
+		}
+		console.log('this is the weather term: ', weather_term);
 		return (
-		<div className='body-container clear'>
+		<div className={`body-container clear weather ${this.props.weather}`}>
 			<div className="container text-center">
-				{this.props.time}
 				{this.props.weather}
 				{/* <h2 className="headings mb-2">Weather Eats</h2> */}
 				<div className="row">
-					<div className="input-group col-md-4 col-8 offset-md-4">
+					<div className="input-group col-md-4 col-8 offset-md-4 mt-5">
 						<input
 							className="form-control"
 							type="text"
@@ -79,9 +87,8 @@ class LandingPage extends Component {
 function mapStateToProps(state) {
 	return {
 		data: state.yelp.businesses,
-		weather: state.yelp.weather,
-		time: state.yelp.time
+		weather: state.yelp.weather
 	};
 }
 
-export default connect(mapStateToProps, { get_yelp, check_time })(LandingPage);
+export default connect(mapStateToProps, { get_yelp })(LandingPage);

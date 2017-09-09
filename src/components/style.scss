@@ -1,36 +1,6 @@
 //SASS for Yelp
 $box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 $primary-color: #069D78;
-$clear: linear-gradient(271deg, #25efe4, #25cdef, #25aaef);
-@-webkit-keyframes body-container {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes body-container {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@keyframes body-container {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-body{
-  height: 100%;
-  margin: 0;
-}
-.body-container{
-  min-height: 100vh;
-  -webkit-animation: body 8s ease infinite;
-  -moz-animation: body 8s ease infinite;
-  animation: body 8s ease infinite;
-}
-.clear{
-  background: $clear;
-}
-
 .container{
   width: 100%;
   height: 100%;
@@ -45,7 +15,6 @@ body{
   margin: 0 auto;
   margin-top: 10px;
 }
-
 .restaurant_img {
   width: 100%;
   height: 200px;
@@ -56,16 +25,13 @@ body{
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
-
 .cards:hover {
   box-shadow: $box-shadow;
   border: 2px solid $primary-color;
 }
-
 .deck {
   margin: 0 auto;
 }
-
 .waiting {
   text-align: center;
 }

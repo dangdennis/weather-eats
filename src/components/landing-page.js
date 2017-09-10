@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import './weather.css';
 import { connect } from "react-redux";
-import { get_yelp } from "../actions";
+import { get_yelp, get_time } from "../actions";
 import Yelp from "./yelp";
 import YTSearch from "./yt_search";
-
+import './timeofday.css';
+import './weather.css';
 
 class LandingPage extends Component {
 	constructor(props) {
@@ -15,30 +15,18 @@ class LandingPage extends Component {
 			yelp: []
 		};
 	}
-
-	// 	thunderstorm: 200-299,
-	// 	drizzle: 300-399,
-	// 	rain: 500-599,
-	// 	snow: 600-699,
-	// 	atmosphere: 700-799,
-	// 	clear: 800,
-	// 	clouds: 801-899,
-	// 	extreme: 900-999
+	componentWillMount(){
+		this.props.get_time();
+	}
 	handleSubmit() {
 		this.props.get_yelp(this.state.input);
-
-		const {weather} = this.props;
 	}
-
 	onEnter(e) {
 		if (e.key === "Enter") {
 			this.props.get_yelp(this.state.input);
 		}
-		console.log('this is props of weather: ', this.props.weather);
 	}
-
 	render() {
-		// console.log('this is weather: ', this.props.weather);
 		let weather_term;
 		if(!this.props.weather){
 			weather_term = 'none';
@@ -46,11 +34,12 @@ class LandingPage extends Component {
 		else{
 			weather_term = this.props.weather[1];
 		}
-		console.log('this is the weather term: ', weather_term);
+		console.log('this is the props for the time_Bg: ', this.props);
+		const { time } = this.props
+		//add weather term ${weather_term}
 		return (
-		<div className={`body-container clear weather ${this.props.weather}`}>
+		<div className={`body-container ${time} ${weather_term}`}>
 			<div className="container text-center">
-				{this.props.weather}
 				{/* <h2 className="headings mb-2">Weather Eats</h2> */}
 				<div className="row">
 					<div className="input-group col-md-4 col-8 offset-md-4 mt-5">
@@ -87,8 +76,9 @@ class LandingPage extends Component {
 function mapStateToProps(state) {
 	return {
 		data: state.yelp.businesses,
-		weather: state.yelp.weather
+		weather: state.yelp.weather,
+		time: state.yelp.time
 	};
 }
 
-export default connect(mapStateToProps, { get_yelp })(LandingPage);
+export default connect(mapStateToProps, { get_yelp, get_time })(LandingPage);

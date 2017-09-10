@@ -5,7 +5,7 @@
 .weather:before, .weather:after {
     content: "";
     position: absolute; left: -50%; top: -50%; right: -50%; bottom: -50%;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
 
     background: transparent repeat;
@@ -30,6 +30,33 @@
     animation-name: weather;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+}
+.cloudy_weather0:before, .cloudy_weather0:after{
+  content: "";
+  position: absolute; left: -50%; top: 10%; right: -50%; bottom: -50%;
+  z-index: 0;
+  pointer-events: none;
+
+  background: transparent;
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: pixelated;
+  opacity: 0.7;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+
+  -webkit-animation-name: cloudy_weather;
+  -webkit-animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation: cloudy_weather;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 .weather:after {
     opacity: 0.8;
@@ -56,6 +83,16 @@
     -webkit-animation-duration: 4.5s;
     animation-duration: 4.5s;
 }
+/* clear weather css */
+.cloudy_weather0.cloud0:before, .cloudy_weather0.cloud0:after{
+  background-image: url('http://pngimg.com/uploads/cloud/cloud_PNG13.png');
+  -webkit-animation-duration: 10s;
+  animation-duration: 10s;
+}
+.cloudy_weather0.cloud0:after{
+  -webkit-animation-duration: 7s;
+  animation-duration: 7s;
+}
 /* animation keyframes */
 @-webkit-keyframes weather {
     from { background-position: 0 0px; }
@@ -72,4 +109,12 @@
 @keyframes weather2 {
     from { background-position: 64px 64px; }
     to { background-position: 64px 1088px; }
+}
+@-webkit-keyframes cloudy_weather{
+  from { background-position: 0 0px; }
+  to { background-position: 1024px 0; }
+}
+@keyframes cloudy_weather{
+  from { background-position: 0 0px; }
+  to { background-position: 1024px 0 ; }
 }

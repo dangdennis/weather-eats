@@ -34,7 +34,7 @@ class LandingPage extends Component {
 		else{
 			weather_term = this.props.weather[1];
 		}
-		console.log('this is the props for the time_Bg: ', this.props.time);
+		console.log('this is the props for the time_Bg: ', this.props);
 		const { time } = this.props
 		//add weather term ${weather_term}
 		return (

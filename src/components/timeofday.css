@@ -1,28 +1,27 @@
-@-webkit-keyframes body-container {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@-moz-keyframes body-container {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
-@keyframes body-container {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-}
 body{
   height: 100%;
   margin: 0;
 }
 .body-container{
   min-height: 100vh;
-  -webkit-animation: body 8s ease infinite;
-  -moz-animation: body 8s ease infinite;
-  animation: body 8s ease infinite;
 }
 .clear{
   background: linear-gradient(271deg, #25efe4, #25cdef, #25aaef);;
+}
+.sunrise{
+  background: linear-gradient(34deg, #c3c32a, #a8bbe7, #6d8af4);
+}
+.sunshine, .sunset{
+  background: linear-gradient(214deg, #ceef00, #ef9100, #c678ff);
+}
+
+.stars {
+  background:#000 url(http://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  width:100%;
+  height:100%;
+  display:block;
 }

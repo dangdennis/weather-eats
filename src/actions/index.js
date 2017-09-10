@@ -30,7 +30,7 @@ export function get_time(){
 	let time = new Date().getHours();
 	let time_bg;
 	if(time >= 20 && time <=4){
-		time_bg = 'nightfall';
+		time_bg = 'stars twinkling';
 	}
 	else if (time >= 5 && time <= 7){
 		time_bg = 'sunrise';

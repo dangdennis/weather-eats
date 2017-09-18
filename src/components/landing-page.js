@@ -46,9 +46,9 @@ class LandingPage extends Component {
 		//add weather term ${weather_term}
 		return (
 		<div className={`body-container ${time} ${weather_term}`}>
-			<div className="container text-center">
+			<div className=" container text-center">
 				{/* <h2 className="headings mb-2">Weather Eats</h2> */}
-				<div className="row">
+				<div className="row padding-group">
 					<div className="input-group col-md-4 col-8 offset-md-4 mt-5">
 						<input
 							className="form-control"

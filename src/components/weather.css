@@ -1,6 +1,13 @@
 .weather {
     position: relative; overflow: hidden;
 }
+.navbar{
+  width: 100vw;
+  position: absolute;
+}
+.padding-group{
+  padding-top: 65px;
+}
 /* pseudo elements: positioning and setup */
 .weather:before, .weather:after {
     content: "";
@@ -33,7 +40,7 @@
 }
 .cloudy_weather0:before, .cloudy_weather0:after{
   content: "";
-  position: absolute; left: -50%; top: 10%; right: -50%; bottom: -50%;
+  position: absolute; left: 0%; top: 0%; right: 0%; bottom: 0%;
   z-index: 0;
   pointer-events: none;
 

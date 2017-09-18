@@ -16,7 +16,7 @@ export function get_yelp(zipcode) {
 			});
 			var term = determineWeather(id);
 			axios
-				.post("http://localhost:5000/search", { zipcode, term })
+				.post("/search", { zipcode, term })
 				.then(resp => {
 					dispatch({
 						type: types.GET_LOCAL_YELP,

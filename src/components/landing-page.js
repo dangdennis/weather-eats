@@ -34,7 +34,14 @@ class LandingPage extends Component {
 		else{
 			weather_term = this.props.weather[1];
 		}
-		console.log('this is the props for the time_Bg: ', this.props);
+		let display_yelp;
+		console.log('this is props.error: ', typeof this.props.error)
+		if(typeof this.props.error == 'object'){
+			display_yelp = <h3 className='offset-md-4 error-message'>Please enter a valid zipcode</h3>
+		}
+		else{
+			display_yelp = <Yelp yelp={this.props.data} />
+		}
 		const { time } = this.props
 		//add weather term ${weather_term}
 		return (
@@ -65,7 +72,7 @@ class LandingPage extends Component {
 					</div>
 				</div>
 				<div className="row">
-					<Yelp yelp={this.props.data} />
+					{display_yelp}
 				</div>
 			</div>
 		</div>
@@ -77,7 +84,8 @@ function mapStateToProps(state) {
 	return {
 		data: state.yelp.businesses,
 		weather: state.yelp.weather,
-		time: state.yelp.time
+		time: state.yelp.time,
+		error: state.yelp.error
 	};
 }
 

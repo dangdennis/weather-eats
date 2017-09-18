@@ -16,14 +16,21 @@ export function get_yelp(zipcode) {
 			});
 			var term = determineWeather(id);
 			axios
-				.post("/search", { zipcode, term })
+				.post("http://localhost:5000/search", { zipcode, term })
 				.then(resp => {
 					dispatch({
 						type: types.GET_LOCAL_YELP,
 						payload: resp.data
 					});
 				});
-		});
+		})
+		.catch(error=>{
+			console.log('error is: ', error);
+			dispatch({
+				type: types.ZIPCODE_FAIL,
+				payload: error
+			})
+		})
 	};
 }
 export function get_time(){

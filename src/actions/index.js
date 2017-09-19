@@ -1,10 +1,8 @@
 import types from "./types";
 import axios from "axios";
-// import YTSearch from "youtube-api-search";
 import KEY from './keys'
-// const KEY = require("./keys");
 const ROOT_URL = `http://api.openweathermap.org/data/2.5/weather?zip=`;
-export function get_yelp(zipcode) {
+export function getYelp(zipcode) {
 	return dispatch => {
 		const url = `${ROOT_URL}${zipcode},us&appid=${KEY.api_key}`;
 		const request = axios.get(url).then(resp => {
@@ -33,7 +31,7 @@ export function get_yelp(zipcode) {
 		})
 	};
 }
-export function get_time(){
+export function getTime(){
 	let time = new Date().getHours();
 	let time_bg;
 	if(time >= 20 && time <=4){

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { get_yelp, get_time } from "../actions";
+import { getYelp, getTime } from "../actions";
 import Yelp from "./yelp";
 import YTSearch from "./yt_search";
 import './timeofday.css';
@@ -16,14 +16,14 @@ class LandingPage extends Component {
 		};
 	}
 	componentWillMount(){
-		this.props.get_time();
+		this.props.getTime();
 	}
 	handleSubmit() {
-		this.props.get_yelp(this.state.input);
+		this.props.getYelp(this.state.input);
 	}
 	onEnter(e) {
 		if (e.key === "Enter") {
-			this.props.get_yelp(this.state.input);
+			this.props.getYelp(this.state.input);
 		}
 	}
 	render() {
@@ -35,7 +35,6 @@ class LandingPage extends Component {
 			weather_term = this.props.weather[1];
 		}
 		let display_yelp;
-		console.log('this is props.error: ', typeof this.props.error)
 		if(typeof this.props.error == 'object'){
 			display_yelp = <h3 className='offset-md-4 error-message'>Please enter a valid zipcode</h3>
 		}
@@ -89,4 +88,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { get_yelp, get_time })(LandingPage);
+export default connect(mapStateToProps, { getYelp, getTime })(LandingPage);

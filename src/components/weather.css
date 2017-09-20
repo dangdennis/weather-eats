@@ -4,6 +4,7 @@
 .navbar{
   width: 100vw;
   position: absolute;
+  z-index: 900;
 }
 .padding-group{
   padding-top: 65px;

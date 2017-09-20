@@ -12,10 +12,11 @@ class YTSearch extends Component {
     };
   }
   componentWillReceiveProps(nextProps) {
+    console.log('this is the next props: ', nextProps);
     let term;
     let { weather } = nextProps;
     if (weather === null) {
-    } else if (weather >= 200 && weather <= 599) {
+    } else if (weather[0] >= 200 && weather[0] <= 599) {
       term = "la vie en rose louis armstrong";
       YT_Search({ key: YT_API_KEY, term }, videos => {
         this.setState({
@@ -23,7 +24,7 @@ class YTSearch extends Component {
           video_saved_url: videos[0].id.videoId
         });
       });
-    } else if (weather >= 600 && weather <= 699) {
+    } else if (weather[0] >= 600 && weather[0] <= 699) {
       term = "christmas music";
       YT_Search({ key: YT_API_KEY, term }, videos => {
         this.setState({
@@ -31,7 +32,7 @@ class YTSearch extends Component {
           video_saved_url: videos[0].id.videoId
         });
       });
-    } else if (weather >= 700 && weather <= 799) {
+    } else if (weather[0] >= 700 && weather[0] <= 799) {
       term = "griz";
       YT_Search({ key: YT_API_KEY, term }, videos => {
         this.setState({
@@ -39,7 +40,7 @@ class YTSearch extends Component {
           video_saved_url: videos[0].id.videoId
         });
       });
-    } else if (weather == 800) {
+    } else if (weather[0] == 800) {
       term = "griz";
       YT_Search({ key: YT_API_KEY, term }, videos => {
         this.setState({
@@ -47,7 +48,7 @@ class YTSearch extends Component {
           video_saved_url: videos[0].id.videoId
         });
       });
-    } else if (weather >= 800 && weather <= 899) {
+    } else if (weather[0] >= 800 && weather[0] <= 899) {
       term = "jazz blues";
       YT_Search({ key: YT_API_KEY, term }, videos => {
         this.setState({
@@ -55,7 +56,7 @@ class YTSearch extends Component {
           video_saved_url: videos[0].id.videoId
         });
       });
-    } else if (weather >= 900 && weather <= 999) {
+    } else if (weather[0] >= 900 && weather[0] <= 999) {
       term = "stairway to heaven";
       YT_Search({ key: YT_API_KEY, term }, videos => {
         this.setState({
